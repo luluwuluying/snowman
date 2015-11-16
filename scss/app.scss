@@ -1,0 +1,74 @@
+@import "settings";
+@import "foundation";
+
+
+.weather-grid {
+    height: 250px;
+}
+
+.top-bar{
+    background:pink;
+h2{
+   font-family: 'Dancing Script', cursive; 
+    font-color:white;
+}
+}
+.header {
+    margin-top:3px;
+  text-align: center;
+  background-image:url(../images/5.svg) ;
+  padding: 100px;
+    background-size: cover;
+    background-position:top;
+  
+.main-header {
+    color: black;
+  }
+}
+     
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+    font-family: arial,tahoma;
+}
+
+.weather {
+  background: white;
+  position: relative;
+
+h3{
+  text-align: center;
+  background:pink no-repeat center center;
+  background-size:contain;
+  padding: 10px;
+    font-family: 'Dancing Script', cursive;
+ }
+    .popular{
+    color:black;
+    }  
+}
+.cityweather{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 25px;
+    font-feature-settings: normal;
+    
+    
+}
+
+.abc{
+    background-color: pink;
+    padding: 10px;
+}
+
+#boy{
+    display: none;
+}
+
+#weathericon{
+    display:none;
+}
+
+#girl{
+    
+    display:none;
+}
