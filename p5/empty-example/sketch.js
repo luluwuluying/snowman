@@ -13,6 +13,12 @@ function setup() {
    snowman.addAnimation("moving","../images/s1.svg");
    snowman.addAnimation("stand","../images/s3.svg");
    
+    sun = createSprite(500, 80,50,50);
+    sun.addAnimation("moving","../images/sun.svg");
+    
+    
+    snowflake = createSprite(800,50,50,50);
+    snowflake.addAnimation("moving","../images/snowflake.svg");
     
     
 
@@ -31,14 +37,14 @@ function keyPressed(){
     
     if(keyCode === LEFT_ARROW){
         snowman.changeAnimation("moving");
-       snowman.mirrorX(-1);
+//       snowman.mirrorX(-1);
         snowman.velocity.x = - 3;
     }
     
     
     else if(keyCode === RIGHT_ARROW){
         snowman.changeAnimation("moving");
-        snowman.mirrorX(1);
+//        snowman.mirrorX(1);
         snowman.velocity.x = 3;
     }
     
