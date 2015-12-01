@@ -2,6 +2,7 @@ var bg;
 var snowman;
 var sun;
 var snowflake;
+var heart;
 
 
 
@@ -14,6 +15,22 @@ function setup() {
    snowman.addAnimation("stand","../images/s3.svg");
    snowman.addAnimation("floating","../images/s2.svg");
    
+    
+    heart = createSprite(90, 20,20,20);
+    heart.addAnimation("stand","../images/heart.svg");
+    
+    heart = createSprite(130, 20,20,20);
+    heart.addAnimation("stand","../images/heart.svg");
+    
+    heart = createSprite(170, 20,20,20);
+    heart.addAnimation("stand","../images/heart.svg");
+    
+    heart = createSprite(210, 20,20,20);
+    heart.addAnimation("stand","../images/heart.svg");
+    
+    heart = createSprite(250, 20,20,20);
+    heart.addAnimation("stand","../images/heart.svg");
+    
     sun = new Group();
     snowflake = new Group();
     
@@ -33,6 +50,8 @@ function setup() {
 
 function draw() {
     background(bg);
+    textSize(20);
+    text("Life:" ,20,30);
 
     for(var i=0;i<sun.length;i++){
         var s = sun[i];
