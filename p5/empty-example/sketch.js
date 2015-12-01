@@ -12,23 +12,57 @@ function setup() {
    snowman = createSprite(windowWidth/2, windowHeight-100,50,50);
    snowman.addAnimation("moving","../images/s1.svg");
    snowman.addAnimation("stand","../images/s3.svg");
+   snowman.addAnimation("floating","../images/s2.svg");
    
-    sun = createSprite(500, 80,50,50);
-    sun.addAnimation("moving","../images/sun.svg");
+    sun = new Group();
+    snowflake = new Group();
     
-    
-    snowflake = createSprite(800,50,50,50);
-    snowflake.addAnimation("moving","../images/snowflake.svg");
-    
-    
+    for(var i=0;i<6;i++){
+        var newSun = createSprite(random(0,width), random(0,100));
+        newSun.addAnimation("moving","../images/sun.svg");
+        sun.add(newSun);
+    }
 
+    for(var i=0;i<6;i++){
+        var newSnowflake = createSprite(random(0,width), random(0,100));
+        newSnowflake.addAnimation("moving","../images/snowflake.svg");
+        newSnowflake.rotationSpeed = -2;
+        newSnowflake.addToGroup(snowflake);
+    }
 }
 
 function draw() {
     background(bg);
+
+    for(var i=0;i<sun.length;i++){
+        var s = sun[i];
+        s.addSpeed(0.001,90);
+        
+        if (s.position.y >height)
+            s.position.y = 0;
+       
+    }
+
     
+    for(var i=0;i<snowflake.length;i++){
+        var f = snowflake[i];
+        f.addSpeed(0.001,90);
+        
+        if (f.position.y >height)
+            f.position.y=0;
+    }
     
+    snowman.collide(sun);
+    snowman.overlap(sun,collect);
+
     
+    snowman.collide(snowflake);
+    snowman.overlap(snowflake,collect);
+    
+    if(snowman.getAnimationLabel() == "strech" && snowman.animation.getFrame()==snowman.animation.getFrame() ){
+        
+        snowman.changeAnimation("normal");
+    }
 
     drawSprites();
 }
@@ -37,14 +71,12 @@ function keyPressed(){
     
     if(keyCode === LEFT_ARROW){
         snowman.changeAnimation("moving");
-//       snowman.mirrorX(-1);
         snowman.velocity.x = - 3;
     }
     
     
     else if(keyCode === RIGHT_ARROW){
         snowman.changeAnimation("moving");
-//        snowman.mirrorX(1);
         snowman.velocity.x = 3;
     }
     
@@ -59,5 +91,16 @@ function keyReleased() {
     snowman.changeAnimation('stand');
     snowman.velocity.x = 0;
     
+}
+
+
+function collect(collector, collected){
     
+    collector.changeAnimation("stretch");
+    collector.animation.rewind();
+    collected.remove();
+    
+    if (collected === sun){
+         snowman.changeAnimation("floating");
+    }
 }
