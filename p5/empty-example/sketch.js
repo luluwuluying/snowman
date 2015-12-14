@@ -89,7 +89,7 @@ function draw() {
     
     }
     
-    if(frameCount%540==0){
+    if(frameCount%780==0){
         speed = speed * 1;
     
     
