@@ -12,7 +12,7 @@ var sunX;
 function setup() {
   
    createCanvas(windowWidth, windowHeight);
-   bg = loadImage("../images/background.svg");
+   bg = loadImage("../images/background1.svg");
    snowman = createSprite(windowWidth/2, windowHeight-100,50,50);
    snowman.addAnimation("stand","../images/s3.svg");
    snowman.addAnimation("floating","../images/s2.svg");
@@ -41,8 +41,8 @@ function draw() {
     background(bg);
     textSize(20);
     text("Life:" ,20,30);
-    textSize(50);
-    text(score,20,80);
+    textSize(60);
+    text(score,width-60,60);
     
     for(var i=0;i<sun.length;i++){
         var s = sun[i];
